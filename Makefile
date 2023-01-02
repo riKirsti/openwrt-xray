@@ -59,7 +59,7 @@ define Build/Patch
 endef
 
 define Build/Compile
-	cd $(PKG_BUILD_DIR); $(GO_PKG_VARS) $(USE_GOPROXY) CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o $(PKG_INSTALL_DIR)/bin/xray ./main; 
+	cd $(PKG_BUILD_DIR); $(GO_PKG_VARS) $(USE_GOPROXY) go build -o $(PKG_INSTALL_DIR)/bin/xray -trimpath -ldflags "-s -w -buildid=" ./main; 
 ifeq ($(CONFIG_PACKAGE_XRAY_COMPRESS_UPX),y)
 	rm -rf $(DL_DIR)/upx-4.0.1.tar.xz
 	wget -q https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-amd64_linux.tar.xz -O $(DL_DIR)/upx-4.0.1.tar.xz
