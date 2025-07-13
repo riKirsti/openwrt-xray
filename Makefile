@@ -69,6 +69,7 @@ ifeq ($(CONFIG_PACKAGE_XRAY_COMPRESS_UPX),y)
 	mkdir -p $(BUILD_DIR)/upx
 	xz -d -c $(DL_DIR)/upx-5.0.1.tar.xz | tar -x -C $(BUILD_DIR)/upx
 	chmod +x $(BUILD_DIR)/upx/upx-5.0.1-amd64_linux/upx
+	ls $(PKG_INSTALL_DIR)/bin
 	$(BUILD_DIR)/upx/upx-5.0.1-amd64_linux/upx --lzma --best $(PKG_INSTALL_DIR)/bin/xray
 endif
 endef
