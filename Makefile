@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=openwrt-xray
-PKG_VERSION:=25.3.31
+PKG_VERSION:=25.6.8
 PKG_RELEASE:=1
 
 PKG_LICENSE:=MPLv2
