@@ -63,13 +63,13 @@ endef
 define Build/Compile
 	cd $(PKG_BUILD_DIR); $(GO_PKG_VARS) $(USE_GOPROXY) go build -o $(PKG_INSTALL_DIR)/bin/xray -trimpath -ldflags "-s -w -buildid=" ./main; 
 ifeq ($(CONFIG_PACKAGE_XRAY_COMPRESS_UPX),y)
-	rm -rf $(DL_DIR)/upx-5.0.0.tar.xz
-	wget -q https://github.com/upx/upx/releases/download/v5.0.0/upx-5.0.0-amd64_linux.tar.xz -O $(DL_DIR)/upx-5.0.0.tar.xz
+	rm -rf $(DL_DIR)/upx-5.0.1.tar.xz
+	wget -q https://github.com/upx/upx/releases/download/v5.0.1/upx-5.0.1-amd64_linux.tar.xz -O $(DL_DIR)/upx-5.0.1.tar.xz
 	rm -rf $(BUILD_DIR)/upx
 	mkdir -p $(BUILD_DIR)/upx
-	xz -d -c $(DL_DIR)/upx-5.0.0.tar.xz | tar -x -C $(BUILD_DIR)/upx
-	chmod +x $(BUILD_DIR)/upx/upx-5.0.0-amd64_linux/upx
-	$(BUILD_DIR)/upx/upx-5.0.0-amd64_linux/upx --lzma --best $(PKG_INSTALL_DIR)/bin/xray
+	xz -d -c $(DL_DIR)/upx-5.0.1.tar.xz | tar -x -C $(BUILD_DIR)/upx
+	chmod +x $(BUILD_DIR)/upx/upx-5.0.1-amd64_linux/upx
+	$(BUILD_DIR)/upx/upx-5.0.1-amd64_linux/upx --lzma --best $(PKG_INSTALL_DIR)/bin/xray
 endif
 endef
 
